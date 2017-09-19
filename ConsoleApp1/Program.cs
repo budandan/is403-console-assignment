@@ -55,11 +55,12 @@ namespace ConsoleApp1
             List<SoccerTeam> sortedTeams = soccerTeams.OrderByDescending(team => team.points).ToList();
 
             // display formatted data
-            Console.WriteLine("Position\t\tName\t\tPoints");
-            Console.WriteLine("--------\t\t----\t\t------");
+            Console.WriteLine("Here is the sorted list:\n");
+            Console.WriteLine("Position\t\tName\t\t\tPoints");
+            Console.WriteLine("--------\t\t----\t\t\t------");
             for (int i = 0; i < numberOfTeams; i++)
             {
-                Console.WriteLine((i + 1) + "       \t\t" + sortedTeams[i].name + "\t\t" + sortedTeams[i].points);
+                Console.WriteLine((i + 1) + "       \t\t" + sortedTeams[i].name + "\t\t\t" + sortedTeams[i].points);
             }
 
             // End programs
