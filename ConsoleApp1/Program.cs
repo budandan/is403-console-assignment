@@ -64,7 +64,7 @@ namespace ConsoleApp1
             }
 
             // End programs
-            Console.WriteLine("\n\nPress any key to continue . . .");
+            Console.WriteLine("\n\n");
             Console.ReadKey();
         }
 
