@@ -16,6 +16,9 @@ namespace ConsoleApp1
             numberOfTeams = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n");
 
+            // set error flag
+            int errorflag = 0;
+
             // initialize List of teams with size numberOfTeams
             List<SoccerTeam> soccerTeams = new List<SoccerTeam>();
 
@@ -24,15 +27,28 @@ namespace ConsoleApp1
             int points; // placebolder var for points
             for (int i = 0; i < numberOfTeams; i++)
             {
+                errorflag = 0; // reset error flag
                 Console.Write("Enter Team " + (i + 1) + "\'s name: ");
                 name = UppercaseFirst(Console.ReadLine());
                 soccerTeams.Add(new SoccerTeam());
                 soccerTeams[i].name = name;
                 Console.WriteLine();
-                Console.Write("Enter Team " + soccerTeams[i].name + "\'s points: ");
-                points = Convert.ToInt32(Console.ReadLine());
-                soccerTeams[i].points = points;
-                Console.WriteLine("\n");
+                while (errorflag == 0)
+                {
+                    try 
+                    {
+                        Console.Write("Enter Team " + soccerTeams[i].name + "\'s points: ");
+                        points = Convert.ToInt32(Console.ReadLine());
+                        soccerTeams[i].points = points;
+                        Console.WriteLine("\n");
+                        errorflag++; // accepted input
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write("Invalid Input...Try Again");
+                        Console.WriteLine("\n");
+                    }
+                }  
             }
 
             // sort list desc by points
