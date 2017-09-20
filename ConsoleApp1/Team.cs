@@ -10,6 +10,6 @@ namespace ConsoleApp1
     {
         public string name;
         public int wins;
-        public int losses;
+        public int loss;
     }
 }
