@@ -11,13 +11,25 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int numberOfTeams;
-            Console.Write("How many teams? ");
-            numberOfTeams = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\n");
-
+            int numberOfTeams = 0; // initialize variable so it plays nicely with for loop scope
             // set error flag
             bool accepted = false;
+ 
+            while (!accepted)
+            {
+                try 
+                {
+                    Console.Write("How many teams? ");
+                    numberOfTeams = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\n");
+                    accepted = true; // input accepted
+                }
+                catch (Exception ex)
+                {
+                    Console.Write("Invalid Input...Try Again");
+                    Console.WriteLine("\n");
+                }    
+            }   
 
             // initialize List of teams with size numberOfTeams
             List<SoccerTeam> soccerTeams = new List<SoccerTeam>();
@@ -56,11 +68,22 @@ namespace ConsoleApp1
 
             // display formatted data
             Console.WriteLine("Here is the sorted list:\n");
-            Console.WriteLine("Position\t\tName\t\t\tPoints");
-            Console.WriteLine("--------\t\t----\t\t\t------");
-            for (int i = 0; i < numberOfTeams; i++)
+            Console.WriteLine("Position\t\t Name\t\t\t  Points");
+            Console.WriteLine("--------\t\t ----\t\t\t  ------");
+            int pos = 1; // position var
+
+            // placeholders for formatted data to output in table
+            string formattedName;
+            string formattedPoints;
+            string formattedPos; 
+
+            foreach (SoccerTeam team in sortedTeams)
             {
-                Console.WriteLine((i + 1) + "       \t\t" + sortedTeams[i].name + "\t\t\t" + sortedTeams[i].points);
+                formattedName = Convert.ToString(team.name).PadRight(25, ' ');
+                formattedPoints = Convert.ToString(team.points).PadRight(25, ' ');
+                formattedPos = Convert.ToString(pos).PadRight(25, ' ');
+                Console.WriteLine(formattedPos + formattedName + formattedPoints);
+                pos++;
             }
 
             // End programs
