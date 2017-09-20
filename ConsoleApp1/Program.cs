@@ -1,4 +1,11 @@
-﻿using System;
+﻿/****************************************************
+* Daniel Ferolino
+* IS 403
+* Sec 002
+* Console Assignment
+****************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
